@@ -1,0 +1,1 @@
+module.exports = require("npm:interact.js@1.2.8/interact.js");
