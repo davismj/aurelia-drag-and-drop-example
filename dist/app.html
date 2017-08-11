@@ -1,18 +1,20 @@
-<template><style>.list {
+<template><style>pre {
+      margin: 5vh 5vw;
+    }
+    .list {
       margin: 5vh 5vw;
       border: 1px solid grey;
     }
-
     .list-item {
       cursor: move;
       padding: 1vh 1vw;
       transform: translateY(0);
     }
-
     .list-item + .list-item {
       border-top: 1px solid grey;
     }
-
     .is-dragging {
-      border: 1px solid grey;
-    }</style><div class="page-host"><div class="list" interact-dropzone interact-drop.delegate="drop($event)"><div class="list-item" repeat.for="item of list" interact-draggable.bind="{ inertia: false }" interact-dragstart.delegate="dragstart($event, item)" interact-dragmove.delegate="drag($event)" interact-dragend.delegate="dragend($event)">${item.name}</div></div><pre>${json}</pre></div></template>
+      border: 1px dashed!important;
+    }</style><div class="page-host"><!-- We decorate our list with the "interact-dropzone" attribute, which sets up drop events on this element. Then, we add a handler for the 
+      drop event. --><div class="list" interact-dropzone interact-drop.delegate="drop($event)"><!-- Likewise, we decorate our list items with the "interact-draggable" event, which sets up drag events on these elements. Then, we add 
+        handlers for dragstart, dragmove, and dragend. See app.js for implementation. --><div class="list-item" repeat.for="item of list" interact-draggable.bind="{ inertia: false }" interact-dragstart.delegate="dragstart($event, item)" interact-dragmove.delegate="drag($event)" interact-dragend.delegate="dragend($event)">${item.name}</div></div><!-- Here, we dirty check a json output of the list so we can see what our data is doing. --><pre>${json}</pre></div></template>

@@ -49,7 +49,6 @@ System.register([], function (_export, _context) {
         App.prototype.dragend = function dragend(_ref2) {
           var event = _ref2.detail;
 
-          event.target.style.webkitTransform = event.target.style.transform = 'translateY(0)';
           event.target.classList.remove('is-dragging');
         };
 
@@ -71,9 +70,9 @@ System.register([], function (_export, _context) {
 
           var item = event.interaction.data.item;
           var element = event.dragEvent.target;
+
           var newIndex = Array.from(event.target.children).indexOf(element);
           var currentIndex = this.list.indexOf(item);
-          debugger;
           if (currentIndex !== newIndex) {
             this.list.splice(currentIndex, 1);
             this.list.splice(newIndex, 0, item);
@@ -105,9 +104,6 @@ System.register([], function (_export, _context) {
             var sibling = parent.children[index];
             parent.insertBefore(element, sibling);
           }
-
-          var y = element.getAttribute('data-y');
-          element.setAttribute('data-y', y - (element.offsetTop - currentOffset));
         };
 
         _createClass(App, [{
